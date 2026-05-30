@@ -99,12 +99,6 @@ const FEATURE_TABS = [
   },
 ]
 
-const STEPS = [
-  { n: 1, tone: 'mint',  bg: 'teal-bg',   icon: '📲', title: 'Download the App', desc: 'Available on iOS & Android. Sign up with your mobile number — under 60 seconds.' },
-  { n: 2, tone: 'peach', bg: 'coral-bg',  icon: '🏦', title: 'Link Your Bank',   desc: 'Securely connect via UPI. Works with all 200+ Indian banks.' },
-  { n: 3, tone: 'lilac', bg: 'violet-bg', icon: '✈',  title: 'Pay & Earn',       desc: 'Start transacting and earning cashback on every single payment.' },
-]
-
 const TRUST = [
   { ic: '🔒', title: '256-bit Encryption',     desc: 'Military-grade AES-256 on every transaction.' },
   { ic: '🛡',  title: '2-Factor Authentication',desc: 'Biometric or PIN verification on every payment.' },
@@ -362,27 +356,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS preview */}
+      {/* GALLERY preview */}
       <section className="section">
         <div className="container">
           <div className="section-head reveal">
-            <span className="eyebrow teal">SIMPLE STEPS</span>
-            <h2>Get Started in <span className="grad-teal">3 Minutes</span></h2>
+            <span className="eyebrow teal">GALLERY</span>
+            <h2>Moments that <span className="grad-teal">made us</span></h2>
+            <p className="lead">A peek behind the scenes — events, merchant activations, and the team at work.</p>
           </div>
 
-          <div className="steps-row">
-            {STEPS.map(s => (
-              <div className="step-tile reveal" key={s.n}>
-                <span className={`step-num ${s.bg}`}>{s.n}</span>
-                <div className={`step-ic ${s.tone}`}>{s.icon}</div>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </div>
+          <div className="home-gal">
+            {HOME_GALLERY.map((g, i) => (
+              <Link to="/gallery" key={g.id} className={`home-gal-card ${i === 0 ? 'big' : ''}`} style={{ '--i': i }}>
+                <img src={`https://picsum.photos/seed/paywallet-${g.id}/800/600`} alt={g.title} loading="lazy" />
+                <span className="home-gal-cat">{g.cat}</span>
+                <span className="home-gal-meta">
+                  <strong>{g.title}</strong>
+                  <small>{g.place}</small>
+                </span>
+              </Link>
             ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: 30 }} className="reveal">
-            <Link to="/how-it-works" className="btn-outline big">See detailed walkthrough →</Link>
+          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
+            <Link to="/gallery" className="btn-outline big">View full gallery →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM preview */}
+      <section className="section" style={{ background: '#fafaff' }}>
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow coral">OUR TEAM</span>
+            <h2>The people <span className="grad-coral">behind PayWallet</span></h2>
+            <p className="lead">A passionate group of engineers, designers, operators and customer-obsessed humans.</p>
+          </div>
+
+          <div className="home-team">
+            {HOME_TEAM.map((m, i) => (
+              <Link to="/team" key={m.name} className="home-team-card" style={{ '--i': i }}>
+                <div className="home-team-photo">
+                  <img src={`https://i.pravatar.cc/200?img=${m.img}`} alt={m.name} loading="lazy" />
+                </div>
+                <h4>{m.name}</h4>
+                <small>{m.role}</small>
+                <span className="home-team-loc">📍 {m.loc}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
+            <Link to="/team" className="btn-primary big">Meet the full team →</Link>
           </div>
         </div>
       </section>
@@ -479,62 +504,6 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
             <Link to="/reviews" className="btn-primary big">Read all reviews →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* GALLERY preview */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow teal">GALLERY</span>
-            <h2>Moments that <span className="grad-teal">made us</span></h2>
-            <p className="lead">A peek behind the scenes — events, merchant activations, and the team at work.</p>
-          </div>
-
-          <div className="home-gal">
-            {HOME_GALLERY.map((g, i) => (
-              <Link to="/gallery" key={g.id} className={`home-gal-card ${i === 0 ? 'big' : ''}`} style={{ '--i': i }}>
-                <img src={`https://picsum.photos/seed/paywallet-${g.id}/800/600`} alt={g.title} loading="lazy" />
-                <span className="home-gal-cat">{g.cat}</span>
-                <span className="home-gal-meta">
-                  <strong>{g.title}</strong>
-                  <small>{g.place}</small>
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
-            <Link to="/gallery" className="btn-outline big">View full gallery →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM preview */}
-      <section className="section" style={{ background: '#fafaff' }}>
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow coral">OUR TEAM</span>
-            <h2>The people <span className="grad-coral">behind PayWallet</span></h2>
-            <p className="lead">A passionate group of engineers, designers, operators and customer-obsessed humans.</p>
-          </div>
-
-          <div className="home-team">
-            {HOME_TEAM.map((m, i) => (
-              <Link to="/team" key={m.name} className="home-team-card" style={{ '--i': i }}>
-                <div className="home-team-photo">
-                  <img src={`https://i.pravatar.cc/200?img=${m.img}`} alt={m.name} loading="lazy" />
-                </div>
-                <h4>{m.name}</h4>
-                <small>{m.role}</small>
-                <span className="home-team-loc">📍 {m.loc}</span>
-              </Link>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
-            <Link to="/team" className="btn-primary big">Meet the full team →</Link>
           </div>
         </div>
       </section>
