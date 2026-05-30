@@ -17,6 +17,8 @@ import Download from './pages/Download'
 import Contact from './pages/Contact'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
+import Gallery from './pages/Gallery'
+import Team from './pages/Team'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -41,6 +43,8 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/team" element={<Team />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </PageTransition>

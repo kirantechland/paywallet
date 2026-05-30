@@ -4,11 +4,11 @@ import Logo from './Logo'
 
 const links = [
   { to: '/features', label: 'Features' },
-  { to: '/bills', label: 'Bills & Recharge' },
   { to: '/how-it-works', label: 'How It Works' },
   { to: '/payments', label: 'Payments' },
   { to: '/security', label: 'Security' },
-  { to: '/reviews', label: 'Reviews' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/team', label: 'Team' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ]

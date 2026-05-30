@@ -27,10 +27,10 @@ export default function Footer() {
         <div>
           <h5>Company</h5>
           <Link to="/about">About Us</Link>
+          <Link to="/team">Our Team</Link>
+          <Link to="/gallery">Gallery</Link>
           <Link to="/reviews">Reviews</Link>
           <a href="#">Careers</a>
-          <a href="#">Press</a>
-          <a href="#">Blog</a>
         </div>
         <div>
           <h5>Support</h5>
