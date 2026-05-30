@@ -117,6 +117,25 @@ const REVIEWS = [
   { c: 'c3', n: 'R', name: 'Rohan Mishra',  role: 'Student, Delhi',               text: 'Best app for splitting bills. The group expense feature is super intuitive.' },
 ]
 
+/* ===== HOME GALLERY preview ===== */
+const HOME_GALLERY = [
+  { id: 1, cat: 'events',    title: 'Founders Day',           place: 'Bengaluru' },
+  { id: 2, cat: 'merchants', title: '1,000th merchant',       place: 'Hyderabad' },
+  { id: 3, cat: 'office',    title: 'Bengaluru HQ rooftop',   place: 'Koramangala' },
+  { id: 4, cat: 'team',      title: 'Engineering offsite',    place: 'Coorg' },
+  { id: 5, cat: 'events',    title: 'India Fintech Summit',   place: 'Mumbai' },
+  { id: 6, cat: 'merchants', title: 'Chai vendor activation', place: 'Old Delhi' },
+]
+
+/* ===== HOME TEAM preview ===== */
+const HOME_TEAM = [
+  { name: 'Aarav Mehta',    role: 'Founder & CEO',         img: 15, loc: 'Bengaluru' },
+  { name: 'Priya Krishnan', role: 'Chief Technology Officer', img: 32, loc: 'Bengaluru' },
+  { name: 'Rohan Desai',    role: 'Chief Operating Officer',  img: 11, loc: 'Mumbai' },
+  { name: 'Anjali Rao',     role: 'Chief Financial Officer',  img: 20, loc: 'Bengaluru' },
+  { name: 'Sneha Iyer',     role: 'Head of Engineering',      img: 45, loc: 'Bengaluru' },
+]
+
 function Stat({ value, suffix, label, gradient, tone, ic }) {
   const [n, ref] = useCounter(value)
   return (
@@ -460,6 +479,62 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
             <Link to="/reviews" className="btn-primary big">Read all reviews →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY preview */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow teal">GALLERY</span>
+            <h2>Moments that <span className="grad-teal">made us</span></h2>
+            <p className="lead">A peek behind the scenes — events, merchant activations, and the team at work.</p>
+          </div>
+
+          <div className="home-gal">
+            {HOME_GALLERY.map((g, i) => (
+              <Link to="/gallery" key={g.id} className={`home-gal-card ${i === 0 ? 'big' : ''}`} style={{ '--i': i }}>
+                <img src={`https://picsum.photos/seed/paywallet-${g.id}/800/600`} alt={g.title} loading="lazy" />
+                <span className="home-gal-cat">{g.cat}</span>
+                <span className="home-gal-meta">
+                  <strong>{g.title}</strong>
+                  <small>{g.place}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
+            <Link to="/gallery" className="btn-outline big">View full gallery →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM preview */}
+      <section className="section" style={{ background: '#fafaff' }}>
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow coral">OUR TEAM</span>
+            <h2>The people <span className="grad-coral">behind PayWallet</span></h2>
+            <p className="lead">A passionate group of engineers, designers, operators and customer-obsessed humans.</p>
+          </div>
+
+          <div className="home-team">
+            {HOME_TEAM.map((m, i) => (
+              <Link to="/team" key={m.name} className="home-team-card" style={{ '--i': i }}>
+                <div className="home-team-photo">
+                  <img src={`https://i.pravatar.cc/200?img=${m.img}`} alt={m.name} loading="lazy" />
+                </div>
+                <h4>{m.name}</h4>
+                <small>{m.role}</small>
+                <span className="home-team-loc">📍 {m.loc}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
+            <Link to="/team" className="btn-primary big">Meet the full team →</Link>
           </div>
         </div>
       </section>
