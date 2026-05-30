@@ -121,13 +121,28 @@ const HOME_GALLERY = [
   { id: 6, cat: 'merchants', title: 'Chai vendor activation', place: 'Old Delhi' },
 ]
 
-/* ===== HOME TEAM preview ===== */
+/* ===== HOME LEADERSHIP — featured CEO card ===== */
+const HOME_CEO = {
+  name: 'Aarav Mehta',
+  role: 'Founder & CEO',
+  img: 15,
+  loc: 'Bengaluru',
+  prev: 'ex-Razorpay · IIT Bombay \'08',
+  bio: [
+    "I started PayWallet with a single conviction: every Indian deserves payments that just work — instantly, safely, and rewardingly.",
+    "We're building the most trusted digital payments platform in India by obsessing over the details no one else does — the first-time setup, the cashback you can actually spend, the support call that ends on the first ring.",
+  ],
+  focus: ['Customer Obsession', 'Trust by Design', 'Long-term Thinking'],
+}
+
+/* ===== HOME OUR TEAM grid (excluding CEO) ===== */
 const HOME_TEAM = [
-  { name: 'Aarav Mehta',    role: 'Founder & CEO',         img: 15, loc: 'Bengaluru' },
   { name: 'Priya Krishnan', role: 'Chief Technology Officer', img: 32, loc: 'Bengaluru' },
   { name: 'Rohan Desai',    role: 'Chief Operating Officer',  img: 11, loc: 'Mumbai' },
   { name: 'Anjali Rao',     role: 'Chief Financial Officer',  img: 20, loc: 'Bengaluru' },
+  { name: 'Vikram Singh',   role: 'Chief Marketing Officer',  img: 13, loc: 'Mumbai' },
   { name: 'Sneha Iyer',     role: 'Head of Engineering',      img: 45, loc: 'Bengaluru' },
+  { name: 'Karthik Nair',   role: 'Head of Product',          img: 8,  loc: 'Bengaluru' },
 ]
 
 function Stat({ value, suffix, label, gradient, tone, ic }) {
@@ -356,6 +371,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LEADERSHIP — featured CEO */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow teal">LEADERSHIP</span>
+            <h2>Led by a <span className="grad-teal">founder you can trust</span></h2>
+          </div>
+
+          <div className="home-ceo reveal">
+            <div className="home-ceo-photo-wrap">
+              <img src={`https://i.pravatar.cc/500?img=${HOME_CEO.img}`} alt={HOME_CEO.name} />
+              <span className="home-ceo-badge">Leadership</span>
+            </div>
+            <div className="home-ceo-body">
+              <span className="eyebrow coral">A WORD FROM OUR FOUNDER</span>
+              <h3>{HOME_CEO.name}</h3>
+              <div className="home-ceo-meta">
+                <span><strong>{HOME_CEO.role}</strong></span>
+                <span>•</span>
+                <span>📍 {HOME_CEO.loc}</span>
+                <span>•</span>
+                <span>{HOME_CEO.prev}</span>
+              </div>
+              {HOME_CEO.bio.map((p, i) => <p key={i}>{p}</p>)}
+              <div className="home-ceo-focus">
+                {HOME_CEO.focus.map(f => <span key={f}>{f}</span>)}
+              </div>
+              <Link to="/team" className="btn-primary big">Read full profile <span>→</span></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR TEAM — grid */}
+      <section className="section" style={{ background: '#fafaff' }}>
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow coral">OUR TEAM</span>
+            <h2>The people <span className="grad-coral">behind PayWallet</span></h2>
+            <p className="lead">A passionate group of engineers, designers, operators and customer-obsessed humans.</p>
+          </div>
+
+          <div className="home-team">
+            {HOME_TEAM.map((m, i) => (
+              <Link to="/team" key={m.name} className="home-team-card" style={{ '--i': i }}>
+                <div className="home-team-photo">
+                  <img src={`https://i.pravatar.cc/200?img=${m.img}`} alt={m.name} loading="lazy" />
+                </div>
+                <h4>{m.name}</h4>
+                <small>{m.role}</small>
+                <span className="home-team-loc">📍 {m.loc}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
+            <Link to="/team" className="btn-outline big">Meet the full team →</Link>
+          </div>
+        </div>
+      </section>
+
       {/* GALLERY preview */}
       <section className="section">
         <div className="container">
@@ -379,35 +455,7 @@ export default function Home() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
-            <Link to="/gallery" className="btn-outline big">View full gallery →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM preview */}
-      <section className="section" style={{ background: '#fafaff' }}>
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow coral">OUR TEAM</span>
-            <h2>The people <span className="grad-coral">behind PayWallet</span></h2>
-            <p className="lead">A passionate group of engineers, designers, operators and customer-obsessed humans.</p>
-          </div>
-
-          <div className="home-team">
-            {HOME_TEAM.map((m, i) => (
-              <Link to="/team" key={m.name} className="home-team-card" style={{ '--i': i }}>
-                <div className="home-team-photo">
-                  <img src={`https://i.pravatar.cc/200?img=${m.img}`} alt={m.name} loading="lazy" />
-                </div>
-                <h4>{m.name}</h4>
-                <small>{m.role}</small>
-                <span className="home-team-loc">📍 {m.loc}</span>
-              </Link>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 36 }} className="reveal">
-            <Link to="/team" className="btn-primary big">Meet the full team →</Link>
+            <Link to="/gallery" className="btn-primary big">View full gallery →</Link>
           </div>
         </div>
       </section>
